@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Pedidos</title>
+    <!-- Link para Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            background-color: #1E1E1E;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #2A2A2A;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        td {
+            background-color: #2A2A2A;
+        }
+
+        .actions button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 10px;
+        }
+
+        .actions button.approve {
+            color: #1e9e3a;
+        }
+
+        .actions button.deny {
+            color: #9e1e4f;
+        }
+
+        .actions button:hover {
+            transform: scale(1.1);
+        }
+
+        a {
+            margin-top: 20px;
+            color: #1e9e3a;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo responsivo para tabela em telas menores */
+        @media (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+
+            .actions button {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Pedidos de Pagamento</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Unidade</th>
+                <th>Fornecedor</th>
+                <th>CNPJ</th>
+                <th>Valor</th>
+                <th>Data de Vencimento</th>
+                <th>Descrição</th>
+                <th>Dados de Pagamento</th> <!-- New Column for Payment Data -->
+                <th>Anexos</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in requests %}
+            <tr>
+                <td>{{ request.unidade }}</td>
+                <td>{{ request.fornecedor }}</td>
+                <td>{{ request.cnpj }}</td>
+                <td>{{ request.valor }}</td>
+                <td>{{ request.data_vencimento }}</td>
+                <td>{{ request.descricao }}</td>
+                <td>{{ request.dados_pagamento }}</td> <!-- Simplified Payment Data -->
+                <td>
+                    {% if request.attachments %}
+                        {% for attachment in request.attachments %}
+                            <a href="{{ url_for('static', filename='uploads/' + attachment.filename) }}" target="_blank">Ver {{ attachment.filename }}</a><br>
+                        {% endfor %}
+                    {% else %}
+                        Sem Anexo
+                    {% endif %}
+                </td>
+                <td>{{ request.status }}</td>
+                <td class="actions">
+                    <form method="post" style="display:inline;">
+                        <input type="hidden" name="request_id" value="{{ request.id }}">
+                        <button class="approve" type="submit" name="action" value="approve">
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                        <button class="deny" type="submit" name="action" value="deny">
+                            <i class="fas fa-times-circle"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('index') }}">Voltar ao Formulário</a>
+</body>
+</html>

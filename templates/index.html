@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Pagamento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <form class="payment-form" action="/" method="POST" enctype="multipart/form-data">
+            <h1>Solicitação de Pagamento</h1>
+            
+            <!-- Unidade Section -->
+            <div class="section">
+                <fieldset>
+                    <legend>Unidade</legend>
+                    <div class="radio-container">
+                        <label>
+                            <input type="radio" name="unidade" value="NefroStar" required> NefroStar
+                        </label>
+                        <label>
+                            <input type="radio" name="unidade" value="INEB"> INEB
+                        </label>
+                        <label>
+                            <input type="radio" name="unidade" value="RenalMais"> RenalMais
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <!-- Fornecedor and CNPJ Section -->
+            <div class="input-group">
+                <div>
+                    <label for="fornecedor">Fornecedor</label>
+                    <input type="text" id="fornecedor" name="fornecedor" required>
+                </div>
+                <div>
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" name="cnpj" maxlength="18" required>
+                </div>
+            </div>
+
+            <!-- Valor and Data Vencimento Section -->
+            <div class="input-group">
+                <div>
+                    <label for="valor">Valor</label>
+                    <input type="text" id="valor" name="valor" required>
+                </div>
+                <div>
+                    <label for="data-vencimento">Data Vencimento</label>
+                    <input type="date" id="data-vencimento" name="data_vencimento" required>
+                </div>
+            </div>
+
+            <!-- Anexo/Descrição and Dados de Pagamento Section -->
+            <div class="input-group">
+                <div>
+                    <label for="descricao">Anexo/Descrição</label>
+                    <textarea name="descricao" id="descricao" required></textarea>
+                    <label for="file">Anexar Arquivos</label>
+                    <input type="file" name="file" multiple>
+                </div>
+                <div>
+                    <label for="dados-pagamento">Dados de Pagamento</label>
+                    <input type="text" id="dados-pagamento" name="dados_pgt" required>
+                </div>
+            </div>
+
+            <!-- Submit and Consultar Buttons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn">REQUERIR</button>
+                <a href="#" id="consultar-btn" class="submit-btn-link">CONSULTAR</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Login Modal Structure -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form" action="/login" method="POST">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
