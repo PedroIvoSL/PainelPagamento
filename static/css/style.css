@@ -1,0 +1,281 @@
+/* Define the Inter font class with a unique weight */
+.inter-font {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Change this to the desired weight, e.g., 100, 300, 700 */
+}
+
+/* Apply the font to the body and form */
+body,
+.payment-form {
+    font-family: "Inter", sans-serif;
+    font-weight: 400; /* Adjust this if needed */
+}
+
+/* Other existing styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-weight: 400; /* Adjust this if needed */
+    background-color: #1E1E1E;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Continue with other styles as before */
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+fieldset{
+    background-color: #2A2A2A;
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.payment-form {
+    background-color: #2A2A2A;
+    padding: 50px;
+    border-radius: 10px;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.payment-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.input-group div {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+input[type="text"],
+textarea {
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    margin-top: 5px;
+}
+
+textarea {
+    height: 80px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #9e1e4f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #7a0a2f;
+}
+
+/* General styles for the form */
+.payment-form {
+    background-color: #2A2A2A;
+    padding: 50px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.radio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between each radio button */
+}
+
+.radio-container label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.radio-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+
+/* Input and textarea styling */
+input[type="text"],
+textarea {
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    margin-top: 5px;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* Focus state */
+input:focus,
+textarea:focus {
+    outline: none;
+    border: 1px solid #9e1e4f;
+}
+
+/* Submit button styling */
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #9e1e4f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #7a0a2f;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .radio-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .radio-container label {
+        margin-bottom: 10px; /* Space between radio buttons in column layout */
+    }
+}
+
+/* Make the link look like a button */
+.submit-btn-link {
+    display: inline-block; /* Makes it behave like a button */
+    padding: 10px;
+    background-color: #1e9e3a;
+    color: #fff;
+    text-align: center;
+    text-decoration: none; /* Remove the underline */
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%; /* Match the width of the submit button */
+    margin-top: 10px; /* Add some space between the buttons */
+}
+
+.submit-btn-link:hover {
+    background-color: #0a7a19; /* Same hover effect */
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+.modal-content {
+    background-color: #2A2A2A;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.modal-content .submit-btn {
+    width: 100%;
+    background-color: #9e1e4f;
+    border: none;
+}
+
+.modal-content .submit-btn:hover {
+    background-color: #7a0a2f;
+}
+
+.close {
+    color: #fff;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #9e1e4f;
+    text-decoration: none;
+    cursor: pointer;
+}
+
