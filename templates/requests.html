@@ -25,11 +25,10 @@
             margin-bottom: 20px;
         }
 
+        /* Table styling */
         table {
             width: 100%;
-            max-width: 900px;
             border-collapse: collapse;
-            margin: 20px 0;
             background-color: #2A2A2A;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
@@ -54,6 +53,25 @@
             background-color: #2A2A2A;
         }
 
+        /* Fix: Table layout should not collapse horizontally */
+        tbody {
+            display: block;
+            max-height: 400px; /* Adjust this height as needed */
+            overflow-y: auto;
+            width: 100%;
+        }
+
+        thead, tbody tr {
+            display: table;
+            width: 100%; /* Prevent horizontal collapse */
+            table-layout: fixed; /* Fixes column alignment */
+        }
+
+        thead {
+            width: 100%; /* Fixed width for the header */
+        }
+
+        /* Buttons and actions */
         .actions button {
             background-color: transparent;
             border: none;
@@ -85,7 +103,7 @@
             text-decoration: underline;
         }
 
-        /* Estilo responsivo para tabela em telas menores */
+        /* Responsive styling */
         @media (max-width: 600px) {
             table {
                 font-size: 14px;
@@ -109,7 +127,7 @@
                 <th>Valor</th>
                 <th>Data de Vencimento</th>
                 <th>Descrição</th>
-                <th>Dados de Pagamento</th> <!-- New Column for Payment Data -->
+                <th>Dados de Pagamento</th>
                 <th>Anexos</th>
                 <th>Status</th>
                 <th>Ações</th>
@@ -124,7 +142,7 @@
                 <td>{{ request.valor }}</td>
                 <td>{{ request.data_vencimento }}</td>
                 <td>{{ request.descricao }}</td>
-                <td>{{ request.dados_pagamento }}</td> <!-- Simplified Payment Data -->
+                <td>{{ request.dados_pagamento }}</td>
                 <td>
                     {% if request.attachments %}
                         {% for attachment in request.attachments %}
