@@ -20,7 +20,7 @@ class PaymentRequest(db.Model):
     data_vencimento = db.Column(db.String(20), nullable=False)
     descricao = db.Column(db.Text, nullable=True)
     dados_pagamento = db.Column(db.String(100), nullable=False)  # Updated to capture 'dados_pgt'
-    status = db.Column(db.String(20), default='Pending')  # Status: Pending, Approved, Denied
+    status = db.Column(db.String(20), default='Pendente')  # Status: Pending, Approved, Denied
     attachments = db.relationship('Attachment', backref='payment_request', lazy=True)
 
 class Attachment(db.Model):
@@ -85,9 +85,9 @@ def requests():
         payment_request = PaymentRequest.query.get(request_id)
 
         if action == 'approve':
-            payment_request.status = 'Approved'
+            payment_request.status = 'Aprovado'
         elif action == 'deny':
-            payment_request.status = 'Denied'
+            payment_request.status = 'Negado'
 
         db.session.commit()
         flash(f'Request {action}d successfully!', 'success')
